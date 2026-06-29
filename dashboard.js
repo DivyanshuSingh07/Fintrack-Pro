@@ -188,32 +188,37 @@ function loadProfile() {
 
 function saveProfile() {
 
-    const name = document
-
+    const updatedName = document
         .getElementById("username")
-
         .value
-
         .trim();
 
-    const profile = {
-
-        name,
-
-        currency
-
-    };
+    // Update current user
+    currentUser.name = updatedName;
 
     localStorage.setItem(
-
-        PROFILE_KEY,
-
-        JSON.stringify(profile)
-
+        "currentUser",
+        JSON.stringify(currentUser)
     );
 
-    alert("Profile Saved");
+    // Update users array
+    const users = JSON.parse(localStorage.getItem("users")) || [];
 
+    const updatedUsers = users.map(user =>
+        user.id === currentUser.id
+            ? { ...user, name: updatedName }
+            : user
+    );
+
+    localStorage.setItem(
+        "users",
+        JSON.stringify(updatedUsers)
+    );
+
+    // Refresh welcome message
+    showWelcomeUser();
+
+    showToast("Profile updated successfully!");
 }
 
 /* ==========================================
