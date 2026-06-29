@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FinTrack Pro</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            💰 FinTrack Pro
+
+            <div id="welcomeUser"></div>
+
+        </div>
+        <ul class="nav-links">
+
+            <li>
+                <a href="#" class="active" onclick="showPage('dashboard',this)">
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="#" onclick="showPage('settings',this)">
+                    Settings
+                </a>
+            </li>
+
+        </ul>
+
+        <div class="nav-actions">
+
+            <button id="openModalBtn" class="primary-btn">
+                + Add Transaction
+            </button>
+
+            <button class="danger-btn" onclick="logout()">
+                Logout
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main>
+
+        <!-- DASHBOARD -->
+
+        <section id="dashboard" class="page active-page">
+
+            <h1>
+                Personal Finance Dashboard
+            </h1>
+
+            <div class="cards">
+
+                <div class="card balance">
+
+                    <h3>Current Balance</h3>
+
+                    <h2 id="balance">
+                        ₹0
+                    </h2>
+
+                </div>
+
+                <div class="card income">
+
+                    <h3>Total Income</h3>
+
+                    <h2 id="income">
+                        ₹0
+                    </h2>
+
+                </div>
+
+                <div class="card expense">
+
+                    <h3>Total Expense</h3>
+
+                    <h2 id="expense">
+                        ₹0
+                    </h2>
+
+                </div>
+
+                <div class="card total">
+
+                    <h3>Total Transactions</h3>
+
+                    <h2 id="transactionsCount">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CHART -->
+
+            <div class="chart-container">
+
+                <h2>
+                    Cash Flow Overview
+                </h2>
+
+                <canvas id="financeChart"></canvas>
+
+            </div>
+
+
+
+            <!-- FILTERS -->
+
+            <div class="filters">
+
+                <button class="filter-btn active-filter"
+                    onclick="setFilter('all',this)">
+                    All
+                </button>
+
+                <button class="filter-btn"
+                    onclick="setFilter('income',this)">
+                    Income
+                </button>
+
+                <button class="filter-btn"
+                    onclick="setFilter('expense',this)">
+                    Expense
+                </button>
+
+            </div>
+
+
+
+            <!-- TABLE -->
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Date</th>
+
+                            <th>Description</th>
+
+                            <th>Category</th>
+
+                            <th>Type</th>
+
+                            <th>Amount</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="transactionTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+
+
+        <!-- SETTINGS -->
+
+        <section id="settings" class="page">
+
+            <h1>
+                Settings
+            </h1>
+
+            <div class="settings-container">
+
+                <div class="setting-box">
+
+                    <label>
+
+                        Display Name
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Your Name">
+
+                    <button
+                        class="primary-btn"
+                        onclick="saveProfile()">
+
+                        Save Name
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="setting-box">
+
+                    <label>
+
+                        Currency
+
+                    </label>
+
+                    <select
+                        id="currency"
+                        onchange="changeCurrency()">
+
+                        <option value="₹">INR (₹)</option>
+
+                        <option value="$">USD ($)</option>
+
+                        <option value="€">EUR (€)</option>
+
+                        <option value="£">GBP (£)</option>
+
+                        <option value="¥">JPY (¥)</option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="setting-box">
+
+                    <label>
+
+                        Dark Mode
+
+                    </label>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="darkToggle"
+                            onchange="toggleDarkMode()">
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <div class="setting-box">
+
+                    <button
+                        class="danger-btn"
+                        onclick="resetData()">
+
+                        Reset All Data
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+
+
+    <!-- ================= MODAL ================= -->
+
+    <div
+        id="transactionModal"
+        class="modal">
+
+        <div class="modal-content">
+
+            <span
+                class="close"
+                onclick="closeModal()">
+
+                &times;
+
+            </span>
+
+            <h2>
+                Add Transaction
+            </h2>
+
+            <form id="transactionForm">
+
+                <select id="type">
+
+                    <option value="">Select Type</option>
+
+                    <option value="income">Income</option>
+
+                    <option value="expense">Expense</option>
+
+                </select>
+
+                <input
+                    type="text"
+                    id="description"
+                    placeholder="Description">
+
+                <input
+                    type="number"
+                    id="amount"
+                    placeholder="Amount">
+
+                <input
+                    type="date"
+                    id="date">
+
+                <select id="category">
+
+                    <option value="">Category</option>
+
+                    <option>Food & Dining</option>
+
+                    <option>Shopping</option>
+
+                    <option>Recharge & Bills</option>
+
+                    <option>Petrol & Auto</option>
+
+                    <option>Utilities</option>
+
+                    <option>Salary</option>
+
+                    <option>Entertainment</option>
+
+                    <option>Other</option>
+
+                </select>
+
+                <button
+                    type="submit"
+                    class="primary-btn">
+
+                    Save Transaction
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ChartJS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- JS -->
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>

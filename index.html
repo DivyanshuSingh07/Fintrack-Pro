@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FinTrack Pro | Personal Finance Tracker</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body class="auth-body">
+
+<div class="auth-wrapper">
+
+    <!-- LEFT SIDE -->
+
+    <div class="hero-section">
+
+        <div class="hero-content">
+
+            <div class="logo">
+
+                💰 FinTrack Pro
+
+            </div>
+
+            <h1>
+
+                Take Control of Your Money
+
+            </h1>
+
+            <p>
+
+                Track income, manage expenses, analyze spending,
+                and grow your savings with one beautiful dashboard.
+
+            </p>
+
+            <div class="hero-features">
+
+                <div>✅ Income & Expense Tracking</div>
+
+                <div>📊 Interactive Charts</div>
+
+                <div>🌙 Dark Mode</div>
+
+                <div>💾 Local Storage</div>
+
+                <div>📱 Responsive Design</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="auth-section">
+
+        <!-- LOGIN -->
+
+        <div class="auth-card" id="loginBox">
+
+            <h2>Welcome Back 👋</h2>
+
+            <p>
+
+                Login to continue managing your finances.
+
+            </p>
+
+            <input
+                id="loginEmail"
+                type="email"
+                placeholder="Email">
+
+            <div class="password-field">
+
+                <input
+                    id="loginPassword"
+                    type="password"
+                    placeholder="Password">
+
+                <span
+                    class="toggle-password"
+                    onclick="togglePassword('loginPassword', this)">
+
+                    👁
+
+                </span>
+
+            </div>
+
+            <button
+                class="primary-btn"
+                onclick="login()">
+
+                Login
+
+            </button>
+
+            <p class="switch-form">
+
+                Don't have an account?
+
+                <span onclick="showRegister()">
+
+                    Register
+
+                </span>
+
+            </p>
+
+        </div>
+
+        <!-- REGISTER -->
+
+        <div
+            class="auth-card"
+            id="registerBox"
+            style="display:none;">
+
+            <h2>Create Account</h2>
+
+            <p>
+
+                Join FinTrack Pro in less than a minute.
+
+            </p>
+
+            <input
+                id="registerName"
+                type="text"
+                placeholder="Full Name">
+
+            <input
+                id="registerEmail"
+                type="email"
+                placeholder="Email">
+
+            <div class="password-field">
+
+                <input
+                    id="registerPassword"
+                    type="password"
+                    placeholder="Password">
+
+                <span
+                    class="toggle-password"
+                    onclick="togglePassword('registerPassword', this)">
+
+                    👁
+
+                </span>
+
+            </div>
+
+            <div
+                id="strengthBar"
+                class="strength-bar">
+
+                <div></div>
+
+            </div>
+
+            <input
+                id="confirmPassword"
+                type="password"
+                placeholder="Confirm Password">
+
+            <button
+                class="primary-btn"
+                onclick="register()">
+
+                Create Account
+
+            </button>
+
+            <p class="switch-form">
+
+                Already have an account?
+
+                <span onclick="showLogin()">
+
+                    Login
+
+                </span>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
