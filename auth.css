@@ -149,7 +149,7 @@
     line-height:1.6;
 }
 
-.auth-card input{
+.auth-card > input{
 
     width:100%;
 
@@ -166,8 +166,10 @@
     outline:none;
 
     transition:.3s;
-}
 
+    box-sizing:border-box;
+
+}
 .auth-card input:focus{
 
     border-color:#4f46e5;
@@ -175,38 +177,153 @@
     box-shadow:0 0 0 4px rgba(79,70,229,.15);
 }
 
-.auth-card button{
+.auth-card > button{
 
     width:100%;
 
     margin-top:10px;
 }
 
-/* ================= PASSWORD ================= */
 
+/* ================= PASSWORD ================= */
 .password-field{
 
     position:relative;
+
+    width:100%;
+
+    margin-bottom:18px;
+
 }
 
 .password-field input{
 
-    margin-bottom:18px;
+    width:100%;
+
+    padding:15px 50px 15px 15px; /* right space for eye */
+
+    border:1px solid #d1d5db;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    outline:none;
+
+    box-sizing:border-box;
+
+    margin:0;
+
+    transition:.3s;
+
+}
+
+.password-field input:focus{
+
+    border-color:#4f46e5;
+
+    box-shadow:0 0 0 4px rgba(79,70,229,.15);
+
 }
 
 .toggle-password{
 
     position:absolute;
 
-    right:18px;
+    top:50%;
 
-    top:16px;
+    right:15px;
+
+    transform:translateY(-50%);
+
+    width:24px;
+
+    height:24px;
+
+    border:none;
+
+    background:transparent;
+
+    padding:0;
+
+    margin:0;
 
     cursor:pointer;
 
-    user-select:none;
+    display:block;
 
-    font-size:18px;
+}
+
+/* Eye */
+
+
+.eye-icon{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:20px;
+
+    height:12px;
+
+    border:2px solid #6366f1;
+
+    border-radius:50%;
+}
+
+.eye-icon::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:6px;
+
+    height:6px;
+
+    background:#6366f1;
+
+    border-radius:50%;
+
+}
+
+.eye-icon::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%) rotate(-45deg);
+
+    width:0;
+
+    height:2px;
+
+    background:#6366f1;
+
+    transition:.2s ease;
+
+}
+
+.eye-icon.slash::after{
+
+    width:24px;
+
 }
 
 /* ================= SWITCH ================= */

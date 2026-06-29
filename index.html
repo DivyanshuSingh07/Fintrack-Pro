@@ -8,7 +8,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>FinTrack Pro | Personal Finance Tracker</title>
+    <title>FinTrack Pro</title>
 
     <link rel="preconnect"
           href="https://fonts.googleapis.com">
@@ -22,6 +22,11 @@
 
     <link rel="stylesheet"
           href="auth.css">
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+        rel="stylesheet"
+        />
 
 </head>
 
@@ -37,7 +42,7 @@
 
             <div class="logo">
 
-                💰 FinTrack Pro
+                <i class="ri-stack-fill"></i> FinTrack Pro
 
             </div>
 
@@ -93,20 +98,22 @@
                 type="email"
                 placeholder="Email">
 
-            <div class="password-field">
+           <div class="password-field">
 
                 <input
                     id="loginPassword"
                     type="password"
                     placeholder="Password">
 
-                <span
+                <button
+                    type="button"
                     class="toggle-password"
-                    onclick="togglePassword('loginPassword', this)">
+                    onclick="togglePassword('loginPassword', this)"
+                    aria-label="Toggle password">
 
-                    👁
+                    <span class="eye-icon slash"></span>
 
-                </span>
+                </button>
 
             </div>
 
@@ -164,13 +171,15 @@
                     type="password"
                     placeholder="Password">
 
-                <span
+                <button
+                    type="button"
                     class="toggle-password"
-                    onclick="togglePassword('registerPassword', this)">
+                    onclick="togglePassword('registerPassword', this)"
+                    aria-label="Toggle password">
 
-                    👁
+                    <span class="eye-icon slash"></span>
 
-                </span>
+                </button>
 
             </div>
 
@@ -182,10 +191,23 @@
 
             </div>
 
+            <div class="password-field">
             <input
                 id="confirmPassword"
                 type="password"
                 placeholder="Confirm Password">
+
+            <button
+                type="button"
+                class="toggle-password"
+                onclick="togglePassword('confirmPassword', this)"
+                aria-label="Toggle password">
+
+                <span class="eye-icon slash"></span>
+
+            </button>
+
+        </div>
 
             <button
                 class="primary-btn"

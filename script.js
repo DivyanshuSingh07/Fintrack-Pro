@@ -43,23 +43,24 @@ function showLogin() {
             PASSWORD TOGGLE
 ========================================== */
 
-function togglePassword(inputId, icon) {
+function togglePassword(inputId, button){
 
     const input = document.getElementById(inputId);
 
-    if (input.type === "password") {
+    const eye = button.querySelector(".eye-icon");
+
+    if(input.type === "password"){
 
         input.type = "text";
 
-        icon.textContent = "🙈";
+        eye.classList.remove("slash");
 
     }
-
-    else {
+    else{
 
         input.type = "password";
 
-        icon.textContent = "👁";
+        eye.classList.add("slash");
 
     }
 
